@@ -9,7 +9,10 @@ import java.util.regex.*;
 // https://www.hackerrank.com/challenges/two-strings/problem
 public class TwoStrings {
 
-    // Complete the twoStrings function below.
+    /*
+        For every char in s1, create a set with each char.
+        Now traverse s2 chars, if any of them exists in the set there is a substring, false otherwise.
+    */
     static String twoStrings(String s1, String s2) {
         
         Set<Character> bagOfCharacters = new HashSet<>();
