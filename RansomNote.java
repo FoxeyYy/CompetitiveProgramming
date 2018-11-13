@@ -9,6 +9,12 @@ import java.util.regex.*;
 // https://www.hackerrank.com/challenges/ctci-ransom-note/problem
 public class RansomNote {
 
+    /*
+        Create a set with each of the words in the magazine.
+        Then traverse every word in note, 
+        if there's a single one that is not in the set we know
+        that note cannot be built using the magazine
+    */
     static void checkMagazine(String[] magazine, String[] note) {
         
         Map<String, Integer> bagOfWords = new HashMap<>(magazine.length);
