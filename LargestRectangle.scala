@@ -7,6 +7,18 @@ object LargestRectangle {
 
   case class Building(index: Int, height: Int)
 
+  /*
+    Use a stack to keep track of previous buildings.
+    If current building's height is > than prev, 
+    we now that max size is either currents height * all prev higher buildings
+    or previous building height * all prev higher buildings.
+    
+    Once we have traveled all previous higher buildings 
+    we add the current height associated with lowest index that is higher than current.
+    
+    Finally, if stack isn't empty we just travel it using its info to calculate area,
+    we are sure that remaining stack buildings are lower than any to their right.
+  */
   def largestRectangle(h: Array[Int]): Long = {
     val heights = mutable.Stack[Building]()
     var answ = 0
