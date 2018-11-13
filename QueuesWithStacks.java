@@ -7,6 +7,12 @@ import java.util.regex.*;
 // https://www.hackerrank.com/challenges/ctci-queue-using-two-stacks/problem
 public class QueuesWithStacks {
     
+    /*
+        if stack2 is empty we must refil from stack, stack 2 can be used as FIFO
+        stack contains enqueued items in LIFO order
+        
+        Dumping a LIFO structure in another LIFO one creates a FIFO one.
+    */
     static class MyQueue<T> {
         
         Stack<T> stack = new Stack<>();
