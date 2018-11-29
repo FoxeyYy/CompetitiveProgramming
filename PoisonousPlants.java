@@ -24,19 +24,19 @@ public class Solution {
         for (Integer n: p) {
             int days = 0;
 
-            while (!stack.isEmpty() && n <= stack.peek().pesticide) { // We search for previous plant that can kill us
-                days = Math.max(days, stack.pop().daysAlive); // And take previous maxAlivesDays, as that indicates how long we'll survive (Delete previous as it won't kill us)
+            while (!stack.isEmpty() && n <= stack.peek().pesticide) { // We search for previous plant that can't kill us
+                days = Math.max(days, stack.pop().daysAlive); //  That plant days indicates how long we'll survive (Delete previous - it won't kill us)
             }
 
-            if (stack.isEmpty()) { //As stack is empty, we know current plant will stay forever
+            if (stack.isEmpty()) { //As stack is empty, we know current plant won't be killed
                 days = 0;
-            } else { // Current plant will survive longer than previous max
+            } else { // Current plant will survive one day longer than previous max
                 days++;
             }
 
             maxDays = Math.max(maxDays, days);
 
-            stack.push(new Plant(n, days)); // Add current plant to check if right one will survive and for how long
+            stack.push(new Plant(n, days)); // We take previous plant maxDays
         }
 
         return maxDays;
