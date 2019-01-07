@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.util.Scanner;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+         String input = scan.nextLine();
+        
+        String output = isUnique(input);
+      
+	  
+		System.out.println(output);
+      
+    }
+    
+    private static String isUnique(String str) {
+    
+        //O(N) both in space and time.
+        
+        Set<Character> alrdyFound = new HashSet<>();
+        
+        for(char c: str.toCharArray()) {
+            if (!Character.isLetter(c)) continue;
+            if (alrdyFound.contains(c)) return "No";
+            
+            alrdyFound.add(c);
+        }
+        
+        return "Yes";
+    }
+}
