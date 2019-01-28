@@ -1,0 +1,50 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    // Complete the countArray function below.
+    static long countArray(int n, int k, int x) {
+
+        final long MOD = 1000000007;
+
+        long[] a = new long[n];
+        long[] b = new long[n];
+
+        a[0] = x == 1 ? 1 : 0;
+        b[0] = x == 1 ? 0 : 1;
+
+        //O(n) time and space
+        for (int i = 1; i < n; i++) {
+            a[i] = b[i-1] % MOD;
+            b[i] = (a[i - 1] * (k - 1) + b[i - 1] * (k - 2)) % MOD;
+        }
+
+        return a[n-1];
+
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+
+        String[] nkx = scanner.nextLine().split(" ");
+
+        int n = Integer.parseInt(nkx[0]);
+
+        int k = Integer.parseInt(nkx[1]);
+
+        int x = Integer.parseInt(nkx[2]);
+
+        long answer = countArray(n, k, x);
+
+        System.out.println(answer);
+
+        scanner.close();
+    }
+}
