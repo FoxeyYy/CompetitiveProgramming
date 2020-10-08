@@ -1,0 +1,44 @@
+class Solution {
+
+    //Time: O(nlogn) average, O(n^2) worst case, n is deck size
+    //Space: O(n), n is deck size
+    public int[] deckRevealedIncreasing(int[] deck) {
+        
+        Arrays.sort(deck);
+        
+        List<Integer> sol = new LinkedList<>();
+        
+        int size = 1;
+        
+        for(int i = deck.length - 1; i >= 0; i--) {
+            int card = deck[i];
+            insertMin(card, sol, size);
+            size++;
+        }
+        
+        int[] fValue = new int[deck.length];
+        
+        int idx = 0;
+        for(Integer card: sol) {
+            fValue[idx] = card;
+            idx++;
+        }
+        
+        return fValue;
+    }
+    
+    private void insertMin(int card, List<Integer> deck, int size) {
+        
+        //Last is head before new min
+        if (deck.size() > 1) {
+            deck.add(0, deck.get(deck.size() - 1)); 
+            deck.remove(deck.size() - 1);
+        }
+        
+        //Min value is always head
+        deck.add(0, card); 
+        
+    }
+    
+    
+}
